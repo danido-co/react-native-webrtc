@@ -199,6 +199,11 @@ class GetUserMediaImpl {
 
             videoTrack = createVideoTrack(cameraCaptureController);
         }
+        else {
+            DummyVideoCaptureController dummyVideoCaptureController = new DummyVideoCaptureController();
+
+            videoTrack = createVideoTrack(dummyVideoCaptureController);
+        }
 
         if (audioTrack == null && videoTrack == null) {
             // Fail with DOMException with name AbortError as per:

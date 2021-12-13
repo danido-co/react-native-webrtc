@@ -104,19 +104,9 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
 
         if (encoderFactory == null || decoderFactory == null) {
             // Initialize EGL context required for HW acceleration.
-            EglBase.Context eglContext = EglUtils.getRootEglBaseContext();
-
-            if (eglContext != null) {
-                encoderFactory
-                    = new DefaultVideoEncoderFactory(
-                    eglContext,
-                    /* enableIntelVp8Encoder */ true,
-                    /* enableH264HighProfile */ false);
-                decoderFactory = new DefaultVideoDecoderFactory(eglContext);
-            } else {
-                encoderFactory = new SoftwareVideoEncoderFactory();
-                decoderFactory = new SoftwareVideoDecoderFactory();
-            }
+            // EglBase.Context eglContext = EglUtils.getRootEglBaseContext();
+            encoderFactory = new SoftwareVideoEncoderFactory();
+            decoderFactory = new SoftwareVideoDecoderFactory();
         }
 
         if (adm == null) {
